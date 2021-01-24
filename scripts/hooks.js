@@ -20,7 +20,6 @@ Hooks.on('ready', async ()=>{
     }catch(err){
       logger.error(`Failed to execute : `, content.data.name);
     }
-    
   });
 });
 
