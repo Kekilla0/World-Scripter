@@ -8,14 +8,13 @@ Hooks.on('init', ()=>{
   settings.registerSettings();
 });
 
-Hooks.on('ready', async ()=>{
-  logger.debug("Macro Data (INIT) | ", pack_key);
-  
+Hooks.on('ready', async ()=>{  
   let pack = game.packs.get(pack_key);
   let contents = await pack.getContent();
 
   contents.forEach(content=>{
     try{
+      logger.info("Macro Data | Executing ", content.data.name);
       eval(content.data.command);
     }catch(err){
       logger.error(`Failed to execute : `, content.data.name);
