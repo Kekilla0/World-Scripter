@@ -9,17 +9,25 @@ Hooks.on('init', ()=>{
 });
 
 Hooks.on('ready', async ()=>{  
-  let pack = game.packs.get(pack_key);
-  let contents = await pack.getContent();
-
-  contents.forEach(content=>{
-    try{
-      logger.info("Macro Data | Executing ", content.data.name);
-      eval(content.data.command);
-    }catch(err){
-      logger.error(`Failed to execute : `, content.data.name);
-    }
-  });
+  execute_pack();
 });
 
+async function execute_pack(){
+  let pack = game.packs.get(pack_key);
+  let contents = await pack.getContent();
+  contents.forEach(c=> execute_command(c.data.name, c.data.command));
+}
 
+function execute_command(name, command){
+  logger.info("Macro Data | Executing ", name);
+  try{
+    eval(command);
+  }catch(err){
+    logger.error(`Failed to execute : `, name);
+  }
+}
+
+
+/*
+  Ideas : Add a context menu to add macro to compendium.
+*/
