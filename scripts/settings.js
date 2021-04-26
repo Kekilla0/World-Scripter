@@ -2,6 +2,7 @@ import { logger } from './logger.js';
 
 export function registerSettings()
 {
+  logger.info("Registering all Settings.");
   Logger_Settings();
 }
 
