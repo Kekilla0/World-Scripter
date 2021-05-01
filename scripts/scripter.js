@@ -18,7 +18,7 @@ function execute_command(name, command){
   try{
     eval(command);
   }catch(err){
-    logger.error(`Failed to execute : `, name);
+    logger.error(`Failed to execute : ${name}`, err);
   }
 }
 export function addContext(html, contextOptions){
