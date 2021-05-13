@@ -1,10 +1,12 @@
+import { settings } from './settings.js';
+
 export class logger {
   static info(...args) {
-    console.log("World Scripter | ", ...args);
+    console.log(`${settings.title} | `, ...args);
   }
 
   static debug(...args) {
-    if (game.settings.get('world-scripter', 'debug'))
+    if (game.settings.get(settings.name, 'debug'))
       logger.info("DEBUG | ", ...args);
   }
 

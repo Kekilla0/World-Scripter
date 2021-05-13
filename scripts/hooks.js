@@ -1,14 +1,11 @@
 import { logger } from './logger.js';
-import * as settings from './settings.js';
-import * as scripter from './scripter.js';
+import { settings } from './settings.js';
+import { scripter } from './scripter.js';
 
-
-//CONFIG.debug.hooks = true;
 logger.info("Initializing Module");
-Hooks.on('init', settings.registerSettings);
+Hooks.on('init', settings.register);
 Hooks.on('ready', scripter.execute_pack);
-Hooks.on('getMacroDirectoryEntryContext', scripter.addContext);
-//Hooks.on('getHotbarEntryContext', scripter.addContext);
+Hooks.on('getMacroDirectoryEntryContext', scripter.add_context);
 
 
 /*
