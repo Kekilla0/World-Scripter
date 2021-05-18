@@ -12,7 +12,6 @@ Hooks.on('getMacroDirectoryEntryContext', scripter.add_context);
   Ideas : Add a context menu to add macro to compendium.
     Hooks :
       `getMacroDirectoryEntryContext`
-      `getCompendiumDirectoryEntryContext`
-      `getItemDirectoryEntryContext`
       //getHotbarEntryContext???
+    Fix the macro Execution
 */
