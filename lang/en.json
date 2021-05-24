@@ -1,3 +1,17 @@
 {
+  "logger.debug" : "DEBUG",
+  "logger.error" : "ERROR",
+
+  "settings.debug.name" : "Debugging",
+  "settings.debug.hint" : "Enable for module debugging",
+
+  "error.scriptMissing" : "script pack missing",
+  "error.scriptFailure" : "Script Error",
+  "error.macroID" : "Macro ID Error",
   
+
+  "context.PreTitle" : "Add to",
+  "context.PostTitle" : "Compendium",
+
+  "" : ""
 }

@@ -3,9 +3,9 @@ import { settings } from './settings.js';
 
 export class scripter{
   static async execute_pack(){
-    logger.info("Accessing Pack | ", settings.key);
-    let pack = game.packs.get(settings.key);
-    if(!pack) return logger.error(`${settings.title} script pack missing.`);
+    logger.debug("Accessing Pack | ", settings.KEY);
+    let pack = game.packs.get(settings.KEY);
+    if(!pack) return logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
     let contents = await pack.getContent();
     contents.forEach(macro => scripter.execute_macro(macro));
   }
@@ -15,7 +15,7 @@ export class scripter{
     try{
       eval(macro.data.command);
     }catch(err){
-      logger.error(`Failed to execute | `, macro.data);
+      logger.error(`${settings.i18n("error.scriptFailure")} | `, macro.data);
       console.error(err);
     }
   }
@@ -23,7 +23,7 @@ export class scripter{
   static add_context(html, contextOptions){
     logger.info("Adding Context Menu Items");
     contextOptions.push({
-      name : `Add to ${settings.title} Compendium`,
+      name : `${settings.i18n("context.PreTitle")} ${settings.TITLE} ${settings.i18n("context.PostTitle")}`,
       icon : '<i class="fas fa-download"></i>',
       condition : () => game.user.isGM,
       callback : li => scripter.add_To_Compendium(li?.data("entityId")),
@@ -33,13 +33,13 @@ export class scripter{
   static async add_To_Compendium(_id){
     logger.info("Context Clicked | ", _id);
     let macro = game.macros.get(_id);
-    if(!macro) return logger.error(`Macro ID Error, ${_id}`);
-    let pack = game.packs.get(settings.key);
-    if(!pack) return logger.error(`${settings.title} script pack missing.`);
+    if(!macro) return logger.error(`${settings.i18n("error.macroID")}, ${_id}`);
+    let pack = game.packs.get(settings.KEY);
+    if(!pack) return logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
     let index = await pack.getIndex();
     if(index.find(ele => ele.name === macro.name))
       await pack.updateEntity({_id : index.find(ele => ele.name === macro.name)._id, command : macro.data.command });
     else 
-      await pack.createEntity(macro);
+      await pack.createEntity(macro.data);
   }
 }

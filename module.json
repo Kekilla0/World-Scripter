@@ -2,11 +2,15 @@
   "name" : "world-scripter",
   "title" : "World Scripter",
   "description" : "Allow you to write a script in game which executes as if it was a world script.",
-  "author" : ["kekilla#7036"],
-  "version" : "0.0.3",
-  "minimumCoreVersion" : "0.6.6",
-  "compatibleCoreVersion" : "0.8.3",
-  "esmodules" : ["scripts/hooks.js"],
+  "author" : [
+    "kekilla#7036"
+  ],
+  "version" : "0.1.0",
+  "minimumCoreVersion" : "0.8.0",
+  "compatibleCoreVersion" : "0.8.5",
+  "esmodules" : [
+    "scripts/hooks.js"
+  ],
   "languages" : [
     {
       "lang" : "en",
@@ -16,7 +20,7 @@
   ],
   "packs" : [
     {
-      "name" : "world-scripter-macros",
+      "name" : "macros",
       "label" : "World Scripter Macros",
       "path" : "packs/wsMacros.db",
       "entity" : "Macro",
@@ -25,5 +29,5 @@
   ],
   "url" : "https://github.com/Kekilla0/world-scripter",
   "manifest" : "https://raw.githubusercontent.com/Kekilla0/World-Scripter/main/module.json",
-  "download" : "https://github.com/Kekilla0/World-Scripter/archive/v0.0.3.zip"
+  "download" : "https://github.com/Kekilla0/World-Scripter/archive/v0.1.0.zip"
 }
