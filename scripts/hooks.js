@@ -9,9 +9,12 @@ Hooks.on('getMacroDirectoryEntryContext', scripter.add_context);
 
 
 /*
-  Ideas : Add a context menu to add macro to compendium.
-    Hooks :
-      `getMacroDirectoryEntryContext`
-      //getHotbarEntryContext???
-    Fix the macro Execution
+  Fixes :
+    Macro Execution => Async
+    setting module builder => add
+    settingsData => change how settings work
+    change update scheme to mirror item/note macro
+
+  Ideas : 
+    Add context menu to macro bar
 */
