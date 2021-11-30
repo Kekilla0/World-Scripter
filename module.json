@@ -5,7 +5,7 @@
   "author" : [
     "kekilla#7036"
   ],
-  "version" : "0.1.0",
+  "version" : "",
   "minimumCoreVersion" : "0.8.0",
   "compatibleCoreVersion" : "0.8.9",
   "esmodules" : [
@@ -28,6 +28,6 @@
     }
   ],
   "url" : "https://github.com/Kekilla0/world-scripter",
-  "manifest" : "https://raw.githubusercontent.com/Kekilla0/World-Scripter/main/module.json",
-  "download" : "https://github.com/Kekilla0/World-Scripter/archive/v0.1.0.zip"
+  "manifest" : "",
+  "download" : ""
 }
