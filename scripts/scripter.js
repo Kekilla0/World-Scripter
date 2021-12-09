@@ -5,7 +5,13 @@ export class scripter{
   static async execute_pack(){
     logger.debug("Accessing Pack | ", settings.KEY);
     let pack = game.packs.get(settings.KEY);
-    if(!pack) return logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
+    if(!pack){
+      logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
+      logger.error(`${settings.TITLE} CREATING COMPENDIUM.`);
+      pack = await CompendiumCollection.createCompendium({
+        entity : "Macro", label : "World Scripter Macros", name : "macros", package : settings.NAME, path : "packs/wsMacros.db", private : false,
+      });
+    } 
     let contents = await pack.getDocuments();
     contents.forEach(macro => scripter.execute_macro(macro));
   }

@@ -26,7 +26,7 @@ export class settings{
         name : settings.i18n("settings.debug.name"),
         hint : settings.i18n("settings.debug.hint"),
         scope :"world",
-        config : false,
+        config : true,
         default : false,
         type : Boolean
       },
