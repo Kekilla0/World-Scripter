@@ -3,18 +3,25 @@ import { settings } from './settings.js';
 import { scripter } from './scripter.js';
 
 logger.info("Initializing Module");
+
+//CONFIG.debug.hooks = true;
+
 Hooks.on('init', settings.register);
 Hooks.on('ready', scripter.execute_pack);
-Hooks.on('getMacroDirectoryEntryContext', scripter.add_context);
+Hooks.on('getMacroDirectoryEntryContext', (html, options) =>scripter.add_context("MacroDirectory", options));
+Hooks.on('getHotbarEntryContext', (html, options) => scripter.add_context("HotBar", options));
 
 
 /*
-  Fixes :
+  TODO Fixes :
     Macro Execution => Async
     setting module builder => add
     settingsData => change how settings work
     change update scheme to mirror item/note macro
 
-  Ideas : 
-    Add context menu to macro bar
+  TODO Ideas : 
+
+  Update Notes : 
+    Added context menu to macro hot bar
+    Updated compatibility for 9.X
 */
