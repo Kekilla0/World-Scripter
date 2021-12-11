@@ -9,12 +9,15 @@ Hooks.on('getMacroDirectoryEntryContext', scripter.add_context);
 
 
 /*
-  Fixes :
+  TODO Fixes :
     Macro Execution => Async
     setting module builder => add
     settingsData => change how settings work
     change update scheme to mirror item/note macro
 
-  Ideas : 
+  TODO Ideas : 
     Add context menu to macro bar
+
+  Update Notes :
+    Fixed DB issue with the module not building the compendium if it wasn't there.
 */
