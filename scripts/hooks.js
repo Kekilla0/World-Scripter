@@ -13,15 +13,16 @@ Hooks.on('getHotbarEntryContext', (html, options) => scripter.add_context("HotBa
 
 
 /*
-  TODO Fixes :
-    Macro Execution => Async
-    setting module builder => add
-    settingsData => change how settings work
-    change update scheme to mirror item/note macro
+  TODO : 
+    Update module scheme to mirror item macro
+    Macro Execution shifted to ASYNC
+    
+  ! Known Issues : 
+    Error on loading where world-scripter tries to create a new compendium even though it already exists.
 
-  TODO Ideas : 
+  ? Fixes :
 
-  Update Notes : 
+  * Update Notes : 
     Added context menu to macro hot bar
     Updated compatibility for 9.X
 */
