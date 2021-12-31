@@ -4,10 +4,14 @@ import { settings } from './settings.js';
 export class scripter{
   static async execute_pack(){
     logger.debug("Accessing Pack | ", settings.KEY);
-    let pack = game.packs.get(settings.KEY);
-    if(!pack){
+    let pack = game.packs.get(settings.KEY) ?? game.packs.get(`world.macros`);
+
+    logger.debug("SCRIPTER | PACK | ", { pack, key : pack?.collection });
+
+    if(!pack && game.user.isGM){
       logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
       logger.error(`${settings.TITLE} CREATING COMPENDIUM.`);
+
       pack = await CompendiumCollection.createCompendium({
         entity : "Macro", label : "World Scripter Macros", name : "macros", package : settings.NAME, path : "packs/wsMacros.db", private : false,
       });
