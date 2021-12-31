@@ -29,13 +29,18 @@ export class scripter{
     }
   }
 
-  static add_context(html, contextOptions){
+  static add_context(origin, contextOptions){
     logger.info("Adding Context Menu Items");
+
+    const callback = origin == "HotBar" 
+      ? (li) => scripter.add_To_Compendium(li?.data("macroId"))
+      : (li) => scripter.add_To_Compendium(li?.data("documentId"));
+
     contextOptions.push({
       name : `${settings.i18n("context.PreTitle")} ${settings.TITLE} ${settings.i18n("context.PostTitle")}`,
       icon : '<i class="fas fa-download"></i>',
       condition : () => game.user.isGM,
-      callback : li => scripter.add_To_Compendium(li?.data("entityId")),
+      callback,
     });
   }
 
@@ -49,14 +54,14 @@ export class scripter{
     if(!pack) return logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
 
     let status = pack.locked;
-    if(!status) pack.configure({ locked : !status });
+    if(status) pack.configure({ locked : false });
 
     let index = await pack.getIndex();
     if(index.find(ele => ele.name === macro.name))
-      await pack.updateEntity({_id : index.find(ele => ele.name === macro.name)._id, command : macro.data.command });
+      await (await pack.getDocument(index.find(ele => ele.name === macro.name)._id)).update({ command : macro.data.command }, { pack : pack.collection });
     else 
-      await pack.createEntity(macro.data);
+      await pack.documentClass.create(macro.data, { pack : pack.collection });
 
-    if(!status) pack.configure({ locked : status });
+    if(status) pack.configure({ locked : true });
   }
 }
