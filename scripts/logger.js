@@ -10,6 +10,6 @@ export class logger {
   }
   static error(...args){
     logger.info(`${settings.i18n("logger.debug")} | `, ...args);
-    ui.notifications.error(`${settings.i18n("logger.debug")} `, ...args);
+    ui.notifications.error(`${settings.i18n("logger.debug")} | ${args.join(' ')}`);
   }
 }

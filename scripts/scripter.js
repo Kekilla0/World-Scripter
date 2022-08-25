@@ -12,7 +12,7 @@ export class scripter{
       logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
       logger.error(`${settings.TITLE} CREATING COMPENDIUM.`);
       pack = await CompendiumCollection.createCompendium({
-        entity : "Macro", label : "World Scripter Macros", name : "macros", package : settings.NAME, path : "packs/wsMacros.db", private : false,
+        type : "Macro", label : "World Scripter Macros", name : "macros", package : "world", path : "packs/macros.db", private : false,
       });
     } 
     let contents = await pack.getDocuments();
@@ -54,7 +54,7 @@ export class scripter{
     if(!pack) return logger.error(`${settings.TITLE} ${settings.i18n("error.scriptMissing")}`);
 
     let status = pack.locked;
-    if(status) pack.configure({ locked : false });
+    if(status) await pack.configure({ locked : false });
 
     let index = await pack.getIndex();
     if(index.find(ele => ele.name === macro.name))
@@ -62,6 +62,6 @@ export class scripter{
     else 
       await pack.documentClass.create(macro.data, { pack : pack.collection });
 
-    if(status) pack.configure({ locked : true });
+    if(status) await pack.configure({ locked : true });
   }
 }

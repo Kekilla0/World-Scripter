@@ -3,7 +3,7 @@ import { logger } from './logger.js';
 export class settings{
   static TITLE = "World Scripter";
   static NAME = "world-scripter";
-  static KEY = "world-scripter.macros";
+  static KEY = "world.macros";
 
   static register(){
     logger.info("Registering all Settings");
