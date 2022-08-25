@@ -4,6 +4,8 @@
 
   "settings.debug.name" : "Debugging",
   "settings.debug.hint" : "Enable for module debugging",
+  "ws.settings.enableContext.name": "Enable Context Menu Quick-Add",
+  "ws.settings.enableContext.hint": "Adds additional entry when right-clicking on a Macro for adding to the World Scripter compendium.",
 
   "error.scriptMissing" : "script pack missing",
   "error.scriptFailure" : "Script Error",
@@ -11,7 +13,9 @@
   
 
   "context.PreTitle" : "Add to",
-  "context.PostTitle" : "Compendium",
+  "context.PostTitle" : "Compendium"
 
-  "" : ""
+  
+
+  
 }

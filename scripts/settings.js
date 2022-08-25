@@ -18,7 +18,7 @@ export class settings{
   }
 
   static register_logger(){
-    logger.info("Registering Logger Debugging");
+    //logger.info("Registering Logger Debugging");
     game.settings.register(
       settings.NAME,
       'debug', 
@@ -30,6 +30,18 @@ export class settings{
         default : false,
         type : Boolean
       },
+    );
+
+    game.settings.register(
+      settings.NAME,
+      'enableContext', {
+        name: settings.i18n("ws.settings.enableContext.name"),
+        hint: settings.i18n("ws.settings.enableContext.hint"),
+        scope: 'world',
+        config: true,
+        default: false,
+        type: Boolean,
+      }
     );
   }
 

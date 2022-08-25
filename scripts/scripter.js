@@ -30,6 +30,7 @@ export class scripter{
   }
 
   static add_context(origin, contextOptions){
+
     logger.info("Adding Context Menu Items");
 
     const callback = origin == "HotBar" 
@@ -39,7 +40,7 @@ export class scripter{
     contextOptions.push({
       name : `${settings.i18n("context.PreTitle")} ${settings.TITLE} ${settings.i18n("context.PostTitle")}`,
       icon : '<i class="fas fa-download"></i>',
-      condition : () => game.user.isGM,
+      condition : () => game.user.isGM && game.settings.get(settings.NAME, 'enableContext'),
       callback,
     });
   }
