@@ -1,6 +1,7 @@
 {
   "title": "World Scripter",
   "description": "Allow you to write a script in game which executes as if it was a world script.",
+  "version": "0.0.1",
   "esmodules": [
     "scripts/hooks.js"
   ],
@@ -25,5 +26,7 @@
     "verified": "10"
   },
   "name": "world-scripter",
-  "minimumCoreVersion": "9"
+  "minimumCoreVersion": "9",
+  "manifest": "",
+  "download": "",
 }
