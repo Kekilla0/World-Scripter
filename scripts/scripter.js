@@ -20,11 +20,15 @@ export class scripter{
   }
 
   static execute_macro(macro){
-    logger.info("Macro Data | Executing | ", macro.data.name);
+    
+    //back compat
+    const data = game.release.generation < 10 ? macro.data : macro;
+
+    logger.info("Macro Data | Executing | ", data.name);
     try{
-      eval(macro.data.command);
+      eval(data.command);
     }catch(err){
-      logger.error(`${settings.i18n("error.scriptFailure")} | `, macro.data);
+      logger.error(`${settings.i18n("error.scriptFailure")} | `, data);
       console.error(err);
     }
   }
@@ -57,11 +61,14 @@ export class scripter{
     let status = pack.locked;
     if(status) await pack.configure({ locked : false });
 
+    //back compat
+    const data = game.release.generation < 10 ? macro.data : macro;
+
     let index = await pack.getIndex();
     if(index.find(ele => ele.name === macro.name))
-      await (await pack.getDocument(index.find(ele => ele.name === macro.name)._id)).update({ command : macro.data.command }, { pack : pack.collection });
+      await (await pack.getDocument(index.find(ele => ele.name === data.name)._id)).update({ command : data.command }, { pack : pack.collection });
     else 
-      await pack.documentClass.create(macro.data, { pack : pack.collection });
+      await pack.documentClass.create(data, { pack : pack.collection });
 
     if(status) await pack.configure({ locked : true });
   }
